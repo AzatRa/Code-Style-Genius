@@ -33,6 +33,8 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator Coroutine()
     {
+        WaitForSecondsRealtime delay = new WaitForSecondsRealtime(_delay);
+
         while (_isRunning)
         {
             Vector3 direction = (_target.position - transform.position).normalized;
@@ -40,7 +42,7 @@ public class Spawner : MonoBehaviour
             bullet.SetSpeed(_speed);
             bullet.Move(direction);
 
-            yield return new WaitForSecondsRealtime(_delay);
+            yield return delay;
         }
     }
 }
